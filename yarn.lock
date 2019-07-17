@@ -698,6 +698,18 @@
     lodash "^4.17.11"
     to-fast-properties "^2.0.0"
 
+"@bbp/nexus-link@^1.1.6":
+  version "1.1.6"
+  resolved "https://registry.yarnpkg.com/@bbp/nexus-link/-/nexus-link-1.1.6.tgz#fac7369467c6575ef841ad9a2d944eadea973f02"
+  dependencies:
+    rxjs "^6.5.2"
+
+"@bbp/nexus-sdk@^1.1.6":
+  version "1.1.6"
+  resolved "https://registry.yarnpkg.com/@bbp/nexus-sdk/-/nexus-sdk-1.1.6.tgz#9465cd89f379508f42f701e8480403e948e31e2e"
+  dependencies:
+    "@bbp/nexus-link" "^1.1.6"
+
 "@gatsbyjs/relay-compiler@2.0.0-printer-fix.2":
   version "2.0.0-printer-fix.2"
   resolved "https://registry.yarnpkg.com/@gatsbyjs/relay-compiler/-/relay-compiler-2.0.0-printer-fix.2.tgz#214db0e6072d40ea78ad5fabdb49d56bc95f4e99"
@@ -1008,6 +1020,12 @@
 abbrev@1:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/abbrev/-/abbrev-1.1.1.tgz#f8f2c887ad10bf67f634f005b6987fed3179aac8"
+
+abort-controller@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/abort-controller/-/abort-controller-3.0.0.tgz#eaf54d53b62bae4138e809ca225c8439a6efb392"
+  dependencies:
+    event-target-shim "^5.0.0"
 
 accepts@^1.3.5, accepts@~1.3.4, accepts@~1.3.5, accepts@~1.3.7:
   version "1.3.7"
@@ -3178,6 +3196,10 @@ etag@~1.8.1:
 event-source-polyfill@^1.0.5:
   version "1.0.7"
   resolved "https://registry.yarnpkg.com/event-source-polyfill/-/event-source-polyfill-1.0.7.tgz#79a0a432e00ef53387309d6213d98332bab0a4ea"
+
+event-target-shim@^5.0.0:
+  version "5.0.1"
+  resolved "https://registry.yarnpkg.com/event-target-shim/-/event-target-shim-5.0.1.tgz#5d4d3ebdf9583d63a5333ce2deb7480ab2b05789"
 
 eventemitter3@^3.0.0:
   version "3.1.2"
@@ -7051,7 +7073,7 @@ rx-lite@*, rx-lite@^4.0.8:
   version "4.0.8"
   resolved "https://registry.yarnpkg.com/rx-lite/-/rx-lite-4.0.8.tgz#0b1e11af8bc44836f04a6407e92da42467b79444"
 
-rxjs@^6.4.0:
+rxjs@^6.4.0, rxjs@^6.5.2:
   version "6.5.2"
   resolved "https://registry.yarnpkg.com/rxjs/-/rxjs-6.5.2.tgz#2e35ce815cd46d84d02a209fb4e5921e051dbec7"
   dependencies:

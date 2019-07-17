@@ -7,7 +7,7 @@
   "scripts": {
     "build": "gatsby build",
     "develop": "gatsby develop",
-    "format": "prettier --write src/**/*.{js,jsx}",
+    "format": "prettier --write {src,plugins}/**/*.{js,jsx,ts,tsx}",
     "start": "npm run develop",
     "serve": "gatsby serve",
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\""
@@ -28,5 +28,8 @@
   },
   "bugs": {
     "url": "https://github.com/gatsbyjs/gatsby/issues"
-  }
+  },
+  "workspaces": [
+    "plugins/*"
+  ]
 }

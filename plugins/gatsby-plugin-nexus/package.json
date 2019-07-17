@@ -9,5 +9,11 @@
   },
   "peerDependencies": {
     "gatsby": ">2.0.0"
+  },
+  "prettier": {
+    "semi": true
+  },
+  "devDependencies": {
+    "prettier": "^1.18.2"
   }
 }

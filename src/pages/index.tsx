@@ -1,14 +1,11 @@
-import * as React from "react"
-import { graphql } from "gatsby"
+import * as React from "react";
+import { Link } from "gatsby";
 
-export default ({ data }) => <div>{data.rickAndMorty.character.name}</div>
-
-export const query = graphql`
-  query {
-    rickAndMorty {
-      character(id: 1) {
-        name
-      }
-    }
-  }
-`
+export default ({ data }) => {
+  return (
+    <div>
+      <Link to="/character/1">character</Link>
+      <Link to="/search">Search View</Link>
+    </div>
+  );
+};

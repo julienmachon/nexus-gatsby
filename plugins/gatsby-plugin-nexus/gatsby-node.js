@@ -1,38 +1,51 @@
-const fetch = require("node-fetch")
-require("abort-controller/polyfill")
+const fetch = require("node-fetch");
+require("abort-controller/polyfill");
 
-const { createNexusClient } = require("@bbp/nexus-sdk")
+const { createNexusClient } = require("@bbp/nexus-sdk");
 exports.sourceNodes = async ({
   actions,
   createNodeId,
-  createContentDigest,
+  createContentDigest
 }) => {
-  const { createNode } = actions
+  const { createNode } = actions;
 
   const nexus = createNexusClient({
-    uri: "https://bbp-nexus.epfl.ch/v1",
-    fetch,
-  })
-  // Create nodes here, generally by downloading data
-  // from a remote API.
-  const data = await nexus.Realm.list()
-  // Process data into nodes.
-  data._results.forEach(datum => {
-    console.log(datum)
-    const nodeContent = JSON.stringify(datum)
-    const nodeMeta = {
-      id: createNodeId(`nexus-${datum["@id"]}`),
+    uri: "http://staging.nexus.ocp.bbp.epfl.ch/v1",
+    fetch
+  });
+
+  const orgs = await nexus.Organization.list();
+  orgs._results.forEach(async org => {
+    const orgNodeId = createNodeId(`nexus-organization-${org["@id"]}`);
+    const projects = await nexus.Project.list(org._label);
+    const projectNodesIds = projects._results.map(project => {
+      const projectNode = {
+        id: createNodeId(`nexus-project-${project["@id"]}`),
+        parent: orgNodeId,
+        children: [],
+        internal: {
+          type: `NexusProject`,
+          content: JSON.stringify(project),
+          contentDigest: createContentDigest(project)
+        }
+      };
+      createNode({ ...project, ...projectNode });
+      return projectNode.id;
+    });
+
+    const orgNode = {
+      id: orgNodeId,
       parent: null,
-      children: [],
+      children: projectNodesIds,
       internal: {
-        type: `Nexus`,
-        content: nodeContent,
-        contentDigest: createContentDigest(datum),
-      },
-    }
-    createNode({ ...datum, ...nodeMeta })
-  })
+        type: `NexusOrganization`,
+        content: JSON.stringify(org),
+        contentDigest: createContentDigest(org)
+      }
+    };
+    createNode({ ...org, ...orgNode });
+  });
 
   // We're done, return.
-  return
-}
+  return;
+};
