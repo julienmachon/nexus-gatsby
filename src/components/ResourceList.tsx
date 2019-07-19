@@ -1,13 +1,12 @@
 import * as React from "react";
 
-const ResourceList: React.FunctionComponent<{ labels?: string[] }> = props => {
-  if (!props.labels) {
-    return null;
-  }
+const ResourceList: React.FunctionComponent<{
+  data: { label: string; value: string }[];
+}> = props => {
   return (
     <ul>
-      {props.labels.map(label => (
-        <li key={label}>{label}</li>
+      {props.data.map(resource => (
+        <li key={resource.value}>{resource.label}</li>
       ))}
     </ul>
   );

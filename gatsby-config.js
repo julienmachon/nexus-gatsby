@@ -6,18 +6,12 @@
 module.exports = {
   /* Your site config here */
   siteMetadata: {
-    title: `Title from siteMetadata`
+    title: `Title from siteMetadata`,
   },
   plugins: [
     "gatsby-plugin-typescript",
-    { resolve: "gatsby-plugin-nexus" },
     {
-      resolve: "gatsby-source-graphql",
-      options: {
-        typeName: "RMAPI",
-        fieldName: "rickAndMorty",
-        url: "https://rickandmortyapi-gql.now.sh/"
-      }
-    }
-  ]
+      resolve: "gatsby-plugin-nexus",
+    },
+  ],
 };
