@@ -1,11 +1,11 @@
 import * as React from "react";
 import { graphql } from "gatsby";
-import Filters from "../components/Filters";
+import Filters, { Filter } from "../components/Filters";
 import ResourceList from "../components/ResourceList";
 
 export default ({ data }) => {
   // parse data for filter in order to feed component
-  const filters = data.allSearchFilter.nodes.map(filter => {
+  const filters: Filter[] = data.allSearchFilter.nodes.map(filter => {
     return {
       label: filter.label,
       value: filter.value,
@@ -25,7 +25,7 @@ export default ({ data }) => {
   const [activeFilter, setActiveFilter] = React.useState();
   return (
     <div>
-      <Filters data={filters} onFilterSelected={f => setActiveFilter(f)} />
+      <Filters data={filters} onFilterItemSelected={f => setActiveFilter(f)} />
       <ResourceList data={resultData[activeFilter] || []} />
     </div>
   );
