@@ -13,5 +13,8 @@ module.exports = {
     {
       resolve: "gatsby-plugin-nexus",
     },
+    {
+      resolve: "sscx-experimental-data",
+    },
   ],
 };

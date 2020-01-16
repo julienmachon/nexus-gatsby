@@ -36,7 +36,7 @@ export const query = graphql`
     allSearchFilter {
       nodes {
         label
-        childrenSearchFilterItem {
+        childSearchFilterItem {
           label
           childrenSearchResult {
             label

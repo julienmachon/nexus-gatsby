@@ -5,6 +5,7 @@ export default ({ data }) => {
   return (
     <div>
       <Link to="/search">Search View</Link>
+      <Link to="/layeranatomy">Layer Anatomy</Link>
     </div>
   );
 };

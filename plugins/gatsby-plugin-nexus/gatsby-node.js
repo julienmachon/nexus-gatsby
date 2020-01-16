@@ -37,16 +37,16 @@ exports.sourceNodes = async ({
   const { createNode } = actions;
 
   const nexus = createNexusClient({
-    uri: "http://staging.nexus.ocp.bbp.epfl.ch/v1",
+    uri: "https://bbp.epfl.ch/nexus/v1",
     token: process.env.NEXUS_TOKEN,
     fetch
   });
 
   // let's get all different brain locations 🤯
   const filters = await nexus.View.sparqlQuery(
-    "julien",
-    "gatsby-portal",
-    "nxv:sparqlGatsby",
+    "bbp",
+    "somatosensorycortex",
+    "nxv:defaultSparqlIndex",
     brainLocationQuery
   ).then(data =>
     data.results.bindings.map(filter => ({
@@ -64,9 +64,9 @@ exports.sourceNodes = async ({
   const brainLocationsData = await Promise.all(
     brainLocationFilters.list.map(async filter => {
       const filterData = await nexus.View.sparqlQuery(
-        "julien",
-        "gatsby-portal",
-        "nxv:sparqlGatsby",
+        "bbp",
+        "somatosensorycortex",
+        "nxv:defaultSparqlIndex",
         getBrainLocationDataQuery(filter.value)
       ).then(data =>
         data.results.bindings.map(resource => ({
