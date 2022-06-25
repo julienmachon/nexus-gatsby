@@ -5,7 +5,7 @@
   "dependencies": {
     "@bbp/nexus-sdk": "^1.1.6",
     "abort-controller": "^3.0.0",
-    "node-fetch": "^2.6.0"
+    "node-fetch": "^2.6.7"
   },
   "peerDependencies": {
     "gatsby": ">2.0.0"
